@@ -10,7 +10,6 @@ import win32com.client
 
 # 分割した差込データのファイルを保存するディレクトリをリセットする
 xlsx_folder = os.path.abspath(xlsx_folder_name)
-print(xlsx_folder)
 if os.path.exists(xlsx_folder):
     shutil.rmtree(xlsx_folder)
 os.mkdir(xlsx_folder)
@@ -20,7 +19,6 @@ xlsx = win32com.client.Dispatch("Excel.Application")
 
 # ファイル名を直接指定するとWorkbooks.Openでエラーになる
 xlsx_path = os.path.abspath(mailmerge_xlsx_file_name)
-print(xlsx_path)
 # 差込データのファイルはプログラムと同じフォルダにあるとする
 data_book = xlsx.Workbooks.Open(xlsx_path, ReadOnly="True")
 
@@ -32,11 +30,9 @@ while 1:
     value = sheet.cells(1, c)
     if value.value is None:
         break
-    print(value)
     c = c+1
 
 max_column = c
-print(max_column)
 
 r = 2
 while 1:
@@ -50,7 +46,6 @@ while 1:
     name = value.value
     print(name)
     divided_xlsx_path = os.path.join(xlsx_folder,(name+".xlsx"))
-    print(divided_xlsx_path)
 
     divide_book = xlsx.Workbooks.Add()
     divide_sheet = divide_book.Worksheets(1)
