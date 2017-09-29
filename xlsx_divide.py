@@ -42,7 +42,6 @@ while 1:
         break
 
     print(name)
-    divided_xlsx_path = os.path.join(xlsx_folder,(name+".xlsx"))
 
     divide_book = xlsx.Workbooks.Add()
     divide_sheet = divide_book.Worksheets(1)
@@ -50,6 +49,7 @@ while 1:
         divide_sheet.Cells(1, c).value = sheet.Cells(1, c).value
         divide_sheet.Cells(2, c).value = sheet.Cells(r, c).value
 
+    divided_xlsx_path = os.path.join(xlsx_folder,(name+".xlsx"))
     divide_book.SaveAs(divided_xlsx_path)
     divide_book.Close()
 
