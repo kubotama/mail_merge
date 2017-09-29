@@ -27,8 +27,7 @@ sheet = data_book.Worksheets(1)
 
 c = 1
 while 1:
-    value = sheet.cells(1, c)
-    if value.value is None:
+    if sheet.cells(1, c).value is None:
         break
     c = c+1
 
@@ -36,14 +35,12 @@ max_column = c
 
 r = 2
 while 1:
-    value = sheet.Cells(r, 1)
-
-    # データが書かれていない行はA桁が空白とする
-    # A桁が空白の行ならば処理を終了
-    if value.value is None:
+    # データが書かれていない行はA列が空白とする
+    # A列が空白の行ならば処理を終了
+    name = sheet.Cells(r, 1).value
+    if name is None:
         break
 
-    name = value.value
     print(name)
     divided_xlsx_path = os.path.join(xlsx_folder,(name+".xlsx"))
 
